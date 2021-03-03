@@ -1,0 +1,2087 @@
+[2021-02-16T05:32:39.463Z][QUERY]: START TRANSACTION
+[2021-02-16T05:32:39.466Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T05:32:39.473Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:32:39.473Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:32:39.473Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T05:32:39.473Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T05:32:39.473Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T05:32:39.474Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T05:32:40.031Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T05:32:40.033Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T05:32:40.040Z][QUERY]: ALTER TABLE `users` CHANGE `id` `id` int NOT NULL
+[2021-02-16T05:32:40.193Z][QUERY]: ALTER TABLE `users` DROP PRIMARY KEY
+[2021-02-16T05:32:40.346Z][QUERY]: ALTER TABLE `users` DROP COLUMN `id`
+[2021-02-16T05:32:40.494Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T05:32:40.644Z][QUERY]: COMMIT
+[2021-02-16T05:34:54.562Z][QUERY]: START TRANSACTION
+[2021-02-16T05:34:54.564Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T05:34:54.566Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:34:54.567Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:34:54.567Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T05:34:54.567Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T05:34:54.567Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T05:34:54.567Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T05:34:54.646Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T05:34:54.652Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T05:34:54.658Z][QUERY]: COMMIT
+[2021-02-16T05:35:34.350Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T05:44:09.837Z][QUERY]: START TRANSACTION
+[2021-02-16T05:44:09.844Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T05:44:09.847Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:44:09.847Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:44:09.847Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T05:44:09.847Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T05:44:09.847Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T05:44:09.847Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T05:44:09.910Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T05:44:09.912Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T05:44:09.918Z][QUERY]: COMMIT
+[2021-02-16T05:44:50.499Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T05:46:32.739Z][QUERY]: START TRANSACTION
+[2021-02-16T05:46:32.741Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T05:46:32.744Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:46:32.744Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:46:32.744Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T05:46:32.744Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T05:46:32.744Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T05:46:32.744Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T05:46:32.808Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T05:46:32.810Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T05:46:32.815Z][QUERY]: COMMIT
+[2021-02-16T05:47:09.885Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T05:48:13.189Z][QUERY]: START TRANSACTION
+[2021-02-16T05:48:13.191Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T05:48:13.194Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:48:13.195Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T05:48:13.195Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T05:48:13.195Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T05:48:13.195Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T05:48:13.196Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T05:48:13.279Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T05:48:13.281Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T05:48:13.287Z][QUERY]: COMMIT
+[2021-02-16T05:49:10.830Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T05:52:28.817Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T06:01:36.460Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T06:03:33.645Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T06:13:18.650Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T06:23:00.677Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T06:23:03.889Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T13:27:26.942Z][QUERY]: START TRANSACTION
+[2021-02-16T13:27:26.945Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:27:26.948Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:27:26.949Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:27:26.949Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:27:26.949Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:27:26.950Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:27:26.950Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:27:27.020Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:27:27.022Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:27:27.024Z][QUERY]: DROP INDEX `id_UNIQUE` ON `users`
+[2021-02-16T13:27:27.074Z][QUERY]: ALTER TABLE `users` CHANGE `id` `id` int NOT NULL
+[2021-02-16T13:27:27.249Z][QUERY]: ALTER TABLE `users` DROP PRIMARY KEY
+[2021-02-16T13:27:27.421Z][QUERY]: ALTER TABLE `users` DROP COLUMN `id`
+[2021-02-16T13:27:27.571Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:27:27.628Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:27:27.628Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:27:27.630Z][QUERY]: ROLLBACK
+[2021-02-16T13:28:55.517Z][QUERY]: START TRANSACTION
+[2021-02-16T13:28:55.519Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:28:55.521Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:28:55.521Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:28:55.522Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:28:55.522Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:28:55.522Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:28:55.522Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:28:55.642Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:28:55.643Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:28:55.648Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:28:55.704Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:28:55.704Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:28:55.706Z][QUERY]: ROLLBACK
+[2021-02-16T13:32:03.688Z][QUERY]: START TRANSACTION
+[2021-02-16T13:32:03.690Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:32:03.692Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:32:03.692Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:32:03.693Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:32:03.693Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:32:03.693Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:32:03.693Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:32:03.753Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:32:03.755Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:32:03.761Z][QUERY]: ALTER TABLE `users` CHANGE `id` `id` int NOT NULL
+[2021-02-16T13:32:03.919Z][QUERY]: ALTER TABLE `users` DROP PRIMARY KEY
+[2021-02-16T13:32:04.083Z][QUERY]: ALTER TABLE `users` DROP COLUMN `id`
+[2021-02-16T13:32:04.234Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:32:04.294Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:32:04.294Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:32:04.296Z][QUERY]: ROLLBACK
+[2021-02-16T13:33:28.393Z][QUERY]: START TRANSACTION
+[2021-02-16T13:33:28.395Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:33:28.397Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:33:28.397Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:33:28.397Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:33:28.397Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:33:28.398Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:33:28.398Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:33:28.469Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:33:28.471Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:33:28.476Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:33:28.532Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(36) NOT NULL PRIMARY KEY
+[2021-02-16T13:33:28.532Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:33:28.534Z][QUERY]: ROLLBACK
+[2021-02-16T13:34:36.766Z][QUERY]: START TRANSACTION
+[2021-02-16T13:34:36.768Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:34:36.770Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:34:36.770Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:34:36.770Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:34:36.771Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:34:36.771Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:34:36.771Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:34:36.834Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:34:36.836Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:34:36.840Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:34:36.897Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:34:36.897Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:34:36.898Z][QUERY]: ROLLBACK
+[2021-02-16T13:37:18.487Z][QUERY]: START TRANSACTION
+[2021-02-16T13:37:18.489Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:37:18.491Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:37:18.491Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:37:18.491Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:37:18.491Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:37:18.491Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:37:18.491Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:37:18.575Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:37:18.577Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:37:18.579Z][QUERY]: DROP INDEX `id_UNIQUE` ON `users`
+[2021-02-16T13:37:18.627Z][QUERY]: ALTER TABLE `users` CHANGE `id` `id` int NOT NULL
+[2021-02-16T13:37:18.795Z][QUERY]: ALTER TABLE `users` DROP PRIMARY KEY
+[2021-02-16T13:37:18.947Z][QUERY]: ALTER TABLE `users` DROP COLUMN `id`
+[2021-02-16T13:37:19.096Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:37:19.154Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:37:19.154Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:37:19.156Z][QUERY]: ROLLBACK
+[2021-02-16T13:43:44.059Z][QUERY]: START TRANSACTION
+[2021-02-16T13:43:44.061Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:43:44.063Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:43:44.064Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:43:44.064Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:43:44.064Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:43:44.064Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:43:44.064Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:43:44.130Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:43:44.133Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:43:44.135Z][QUERY]: DROP INDEX `id_UNIQUE` ON `users`
+[2021-02-16T13:43:44.194Z][QUERY]: ALTER TABLE `users` CHANGE `id` `id` int NOT NULL
+[2021-02-16T13:43:44.369Z][QUERY]: ALTER TABLE `users` DROP PRIMARY KEY
+[2021-02-16T13:43:44.548Z][QUERY]: ALTER TABLE `users` DROP COLUMN `id`
+[2021-02-16T13:43:44.695Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:43:44.755Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:43:44.755Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:43:44.757Z][QUERY]: ROLLBACK
+[2021-02-16T13:44:38.963Z][QUERY]: START TRANSACTION
+[2021-02-16T13:44:38.965Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:44:38.967Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:44:38.967Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:44:38.967Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:44:38.967Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:44:38.967Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:44:38.967Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:44:39.044Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:44:39.046Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:44:39.050Z][QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:44:39.109Z][FAILED QUERY]: ALTER TABLE `users` ADD `id` varchar(255) NOT NULL PRIMARY KEY
+[2021-02-16T13:44:39.109Z][QUERY ERROR]: Error: Duplicate entry '' for key 'PRIMARY'
+[2021-02-16T13:44:39.111Z][QUERY]: ROLLBACK
+[2021-02-16T13:47:57.525Z][QUERY]: START TRANSACTION
+[2021-02-16T13:47:57.527Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-16T13:47:57.529Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:47:57.529Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-16T13:47:57.529Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-16T13:47:57.529Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-16T13:47:57.529Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-16T13:47:57.529Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-16T13:47:57.596Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-16T13:47:57.599Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-16T13:47:57.601Z][QUERY]: DROP INDEX `id_UNIQUE` ON `users`
+[2021-02-16T13:47:57.636Z][QUERY]: COMMIT
+[2021-02-16T14:04:15.678Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-16T14:31:21.792Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-17T05:25:56.132Z][QUERY]: START TRANSACTION
+[2021-02-17T05:25:56.135Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-17T05:25:56.152Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T05:25:56.153Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T05:25:56.153Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-17T05:25:56.153Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-17T05:25:56.154Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-17T05:25:56.154Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-17T05:25:56.732Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-17T05:25:56.734Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-17T05:25:56.739Z][QUERY]: COMMIT
+[2021-02-17T05:30:43.617Z][QUERY]: START TRANSACTION
+[2021-02-17T05:30:43.619Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-17T05:30:43.621Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T05:30:43.622Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T05:30:43.622Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-17T05:30:43.622Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-17T05:30:43.622Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-17T05:30:43.622Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-17T05:30:43.707Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-17T05:30:43.710Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-17T05:30:43.715Z][QUERY]: COMMIT
+[2021-02-17T05:40:50.409Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-17T06:07:55.758Z][QUERY]: START TRANSACTION
+[2021-02-17T06:07:55.769Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2021-02-17T06:07:55.774Z][QUERY]: 
+                SELECT
+                    `TABLE_SCHEMA`,
+                    `TABLE_NAME`
+                FROM
+                    `INFORMATION_SCHEMA`.`TABLES`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T06:07:55.774Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+                
+[2021-02-17T06:07:55.775Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2021-02-17T06:07:55.775Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2021-02-17T06:07:55.775Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2021-02-17T06:07:55.775Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'backofficev1'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'backofficev1'
+                    AND
+                    `TABLE_NAME` = 'users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2021-02-17T06:07:55.844Z][QUERY]: SELECT VERSION() AS `version`
+[2021-02-17T06:07:55.845Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'backofficev1' AND `TABLE_NAME` = 'typeorm_metadata'
+[2021-02-17T06:07:55.850Z][QUERY]: COMMIT
+[2021-02-17T06:10:09.838Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-17T06:10:11.659Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User`
+[2021-02-21T09:43:08.911Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User`  ORDER BY `User`.`id` ASC
+[2021-02-21T09:45:07.441Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User`  ORDER BY `User`.`id` ASC
+[2021-02-23T12:06:00.933Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? LIMIT 1 -- PARAMETERS: ["dddddddddd"]
+[2021-02-23T12:11:05.886Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["sdfsdf","sdfsdf"]
+[2021-02-23T12:13:01.286Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["ddff","aaaaa"]
+[2021-02-23T13:13:58.740Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["test@test.com","1234"]
+[2021-02-23T13:14:30.196Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:17:49.157Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:20:50.726Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:23:49.027Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:27:47.649Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail`, `User`.`password` AS `User_password` FROM `users` `User` WHERE `User`.`name` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:29:42.058Z][QUERY]: SELECT `User`.`name` AS `User_name`, `User`.`mail` AS `User_mail`, `User`.`id` AS `User_id` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:30:00.042Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [null]
+[2021-02-23T13:31:45.377Z][QUERY]: SELECT `User`.`name` AS `User_name`, `User`.`mail` AS `User_mail`, `User`.`id` AS `User_id` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T13:31:48.116Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [null]
+[2021-02-23T14:26:15.711Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:26:19.840Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:27:47.724Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:27:47.735Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:30:24.818Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:30:24.830Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:30:26.066Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:30:26.103Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:31:30.265Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:31:30.273Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:32:39.264Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:32:39.271Z][QUERY]: SELECT `UserRol`.`id` AS `UserRol_id`, `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:33:30.908Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T14:33:30.915Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T14:33:41.581Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.co","1234"]
+[2021-02-23T15:41:35.627Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T15:41:35.635Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T15:59:16.938Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-23T15:59:16.972Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-23T15:59:26.487Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","12"]
+[2021-02-23T16:05:22.330Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","12"]
+[2021-02-24T04:43:04.429Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","123"]
+[2021-02-24T04:44:09.615Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T04:44:09.619Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T04:45:41.793Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T04:45:41.795Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T04:53:37.149Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T04:53:37.155Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:23:51.200Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:23:51.208Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:25:29.931Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:25:29.938Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:26:04.249Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:26:04.254Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:27:36.708Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:27:36.715Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:28:33.211Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:28:33.222Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:29:37.777Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:29:37.783Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:30:17.415Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","123"]
+[2021-02-24T05:30:25.011Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:30:25.020Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:38:24.672Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:38:24.675Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:38:58.718Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:38:58.720Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:41:21.649Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:41:21.654Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:41:46.057Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:41:46.069Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:42:03.210Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:42:03.218Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:43:01.543Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:43:01.552Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:43:13.576Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:43:13.583Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:44:21.222Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:44:21.225Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:45:30.064Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:45:30.073Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:51:34.089Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:51:34.093Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:52:41.979Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:52:41.987Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:52:46.733Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:52:46.736Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:53:26.622Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:53:26.624Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:55:58.817Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:55:58.820Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T05:56:30.178Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T05:56:30.184Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:00:18.942Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:00:18.949Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:01:29.797Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:01:29.802Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:03:38.757Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:03:38.766Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:05:36.970Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:05:36.973Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:06:47.625Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:06:47.629Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:07:23.450Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:07:23.458Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:08:29.532Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:08:29.542Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:09:30.504Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:09:30.509Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:11:30.024Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:11:30.030Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:12:12.025Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:12:12.034Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:12:25.278Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:12:25.286Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:18:33.966Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:18:33.976Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:19:27.760Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:19:27.764Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:19:28.718Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:19:28.722Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:19:44.443Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:19:44.447Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:20:25.394Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:20:25.398Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:25:38.449Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:25:38.453Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:27:31.559Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:27:31.564Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:28:49.177Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:28:49.187Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:29:22.577Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:29:22.581Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:29:26.568Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:29:26.573Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:30:17.323Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:30:17.326Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:34:57.869Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:34:57.876Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:38:16.796Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:38:16.806Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:38:46.559Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:38:46.571Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:40:59.480Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:40:59.534Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:41:31.024Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:41:31.030Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:42:42.804Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:42:42.807Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:43:43.905Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:43:43.912Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:44:39.165Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:44:39.175Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:52:47.531Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:52:47.535Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:53:45.810Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:53:45.815Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:54:06.554Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:54:06.562Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:54:24.761Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:54:24.766Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:54:38.338Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:54:38.340Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T06:58:53.294Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T06:58:53.303Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:01:32.291Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:01:32.302Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:02:13.138Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:02:13.146Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:02:37.543Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:02:37.550Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:06:25.519Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:06:25.531Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:07:25.619Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:07:25.627Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:08:24.066Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:08:24.068Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:10:55.317Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:10:55.322Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:12:40.625Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:12:40.635Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:18:38.249Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:18:38.254Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:21:21.542Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:21:21.551Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:21:44.112Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:21:44.124Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:22:36.811Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:22:36.818Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:23:22.392Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:23:22.396Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:23:56.004Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:23:56.009Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:25:42.657Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:25:42.660Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
+[2021-02-24T07:26:28.720Z][QUERY]: SELECT `User`.`id` AS `User_id`, `User`.`name` AS `User_name`, `User`.`alias` AS `User_alias`, `User`.`mail` AS `User_mail` FROM `users` `User` WHERE `User`.`mail` = ? AND `User`.`password` = ? LIMIT 1 -- PARAMETERS: ["tes@test.com","1234"]
+[2021-02-24T07:26:28.728Z][QUERY]: SELECT `UserRol`.`userid` AS `UserRol_userid`, `UserRol`.`rolid` AS `UserRol_rolid`, `UserRol`.`id` AS `UserRol_id` FROM `users_roles` `UserRol` WHERE `UserRol`.`userid` = ? -- PARAMETERS: [1]
